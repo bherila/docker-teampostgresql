@@ -21,7 +21,7 @@ RUN  apk add --no-cache --virtual .build-deps tar curl libcap \
  &&  rm -rf /var/cache/apk/*
 
 RUN  apk add --no-cache --virtual .build-deps unzip curl libcap \
- &&  curl -Lo teampostgresql.zip http://cdn.webworks.dk/download/teampostgresql_multiplatform.zip \
+ &&  curl -Lo teampostgresql.zip https://github.com/bherila/docker-teampostgresql/releases/download/2018-10-25/teampostgresql_multiplatform.zip \
  &&  unzip -o teampostgresql.zip \
  &&  mv teampostgresql/webapp /app \
  &&  chown -R teampostgresql /app \
@@ -34,3 +34,4 @@ RUN  apk add --no-cache --virtual .build-deps unzip curl libcap \
 
 ENTRYPOINT ["teampostgresql"]
 ADD docker-entrypoint.sh /bin/teampostgresql
+EXPOSE 8082
